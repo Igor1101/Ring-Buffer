@@ -1,6 +1,7 @@
 #include <inttypes.h>
 #include <stddef.h>
 #include <assert.h>
+#include <signal.h>
 /**
  * @file
  * Prototypes and structures for the ring buffer module.
@@ -28,7 +29,7 @@ extern "C"
  * The type which is used to hold the size
  * and the indicies of the buffer.
  */
-typedef size_t ring_buffer_size_t;
+typedef sig_atomic_t ring_buffer_size_t;
 
 /**
  * Used as a modulo operator
@@ -52,11 +53,11 @@ struct ring_buffer_t {
   /** Buffer memory. */
   char *buffer;
   /** Buffer mask. */
-  ring_buffer_size_t buffer_mask;
+  volatile ring_buffer_size_t buffer_mask;
   /** Index of tail. */
-  ring_buffer_size_t tail_index;
+  volatile ring_buffer_size_t tail_index;
   /** Index of head. */
-  ring_buffer_size_t head_index;
+  volatile ring_buffer_size_t head_index;
 };
 
 /**

@@ -5,7 +5,8 @@
  * Implementation of ring buffer functions.
  */
 
-void ring_buffer_init(ring_buffer_t *buffer, char *buf, size_t buf_size) {
+void ring_buffer_init(ring_buffer_t *buffer, char *buf, size_t buf_size)
+{
   RING_BUFFER_ASSERT(RING_BUFFER_IS_POWER_OF_TWO(buf_size) == 1);
   buffer->buffer = buf;
   buffer->buffer_mask = buf_size - 1;
