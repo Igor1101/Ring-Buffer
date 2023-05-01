@@ -29,7 +29,7 @@ extern "C"
    * The type which is used to hold the size
    * and the indicies of the buffer.
    */
-  typedef sig_atomic_t ring_buffer_size_t;
+  typedef unsigned int ring_buffer_size_t;
 
 /**
  * Used as a modulo operator
